@@ -9,26 +9,10 @@ $id = filter_input(INPUT_GET, 'id');
 $bt = find_bt_by_id($id);
 
 if ($bt['completion_date']) {
-
+    complete_check_bt($id, null);
 }
 else{
-    $dbh = connect_db();
-    $sql = <<<EOM
-    UPDATE
-        plans
-    SET
-        completion_date = :completion_date
-    WHERE
-        id = :id
-    EOM;
-    
-    $stmt = $dbh->prepare($sql);
-    $stmt->bindValue(':id', $id, PDO::PARAM_INT);
-    $stmt->bindValue(':completion_date', $completion_date, PDO::PARAM_STR);
-    $stmt->execute();
-    
-    header('Location: index.php');
-    exit;
+    complete_check_bt($id, $completion_date);
 }
 
 ?>

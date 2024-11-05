@@ -111,7 +111,7 @@ function edit_bt_sql($title,$due_date,$id){
     exit;
 }
 
-function complete_check_bt($id,){
+function complete_check_bt($id, $completion_date){
     $dbh = connect_db();
     $sql = <<<EOM
     UPDATE
@@ -124,9 +124,30 @@ function complete_check_bt($id,){
     
     $stmt = $dbh->prepare($sql);
     $stmt->bindValue(':id', $id, PDO::PARAM_INT);
-    $stmt->bindValue(':completion_date', , PDO::PARAM_STR);
+    $stmt->bindValue(':completion_date', $completion_date, PDO::PARAM_STR);
     $stmt->execute();
     
+    header('Location: index.php');
+    exit;
+}
+
+function delete_bt($id){
+    // データベースに接続
+    $dbh = connect_db();
+
+    $sql = <<<EOM
+    DELETE
+    FROM
+        plans
+    WHERE
+        id = :id
+    EOM;
+
+    $stmt = $dbh->prepare($sql);
+    $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+    $stmt->execute();
+    $bt = $stmt->fetch(PDO::FETCH_ASSOC);
+
     header('Location: index.php');
     exit;
 }
