@@ -35,6 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <h1 class="title">学習管理アプリ</h1>
 
     <div class="form-area">
+        <h3 class="sub_title">編集</h1>
         <!-- エラー表示 -->
             <?php if ($errors) : ?>
                 <ul class="errors">
