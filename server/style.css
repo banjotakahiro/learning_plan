@@ -218,3 +218,27 @@ input[type="date"] {
             width: 25%;
         }
 }
+
+/* 編集画面のcssファイル */
+.edit-update-btn{
+    margin-bottom: 10px;
+}
+
+.edit-return-btn{
+    text-align: center;
+    margin-bottom: 10px;
+    text-decoration: none;
+    display: block;
+    width: 60%; /* 幅を指定 */
+    margin: 0 auto; 
+    background-color: blue;
+    color: white;
+    border-radius: 5px; /* 角を丸める場合 */
+}
+
+@media (max-width: 800px){
+    .form-area{
+        width: 80%;
+    }
+}
+
