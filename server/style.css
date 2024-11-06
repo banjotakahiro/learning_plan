@@ -27,6 +27,20 @@ body {
     padding: 20px;
 }
 
+.errors{
+    display: block;
+    width: 60%;
+    color: red;
+    list-style: none;
+    margin: 0 auto;
+    background-color: #f9c1c1;
+    border-radius: 5px; 
+}
+
+.errors li {
+    margin-left: 20px;
+    font-size: 15px;
+}
 
 .form_item{
     display: flex;
@@ -88,10 +102,16 @@ input[type="date"] {
 .manipulate_btn{
     display: inline;
 }
+/* 完了日の文字色編集 */
+
+.expired{
+    color: red;
+}
 /* ボタン一覧 */
 
 .btn {
     display: inline-block; /* Flexboxを使用 */
+    margin-left: 3px;
 }
 
 
@@ -175,3 +195,26 @@ input[type="date"] {
     text-align: left;
 }
 
+@media (max-width: 800px){
+    .form-area,
+    .incomplete-area,
+    .complete-area{
+        width: 80%;
+    }
+    .plan-title{
+        width: 40%;
+    }
+    .btn{
+        padding: 7px 12px;
+        font-size: 15px;
+    }
+    .return-btn{
+        padding: 7px 10px;
+    }
+}
+
+@media (max-width: 600px){
+        .plan-title{
+            width: 25%;
+        }
+}

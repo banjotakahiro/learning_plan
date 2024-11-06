@@ -35,13 +35,14 @@ $bts = find_bt_all();
 
         <div class="form-area">
         <!-- エラー表示 -->
-            <?php if ($errors) : ?>
-                <ul class="errors">
+            <ul class="errors">
+                <?php if ($errors) : ?>
                     <?php foreach ($errors as $error) : ?>
                         <li><?=h($error)?></li>
                     <?php endforeach; ?>
-                </ul>
-            <?php endif; ?>
+                <?php endif; ?>
+            </ul>
+
 
             <form action="" method="post">
                 <span class=form_item>
@@ -73,7 +74,8 @@ $bts = find_bt_all();
                         <?php if (empty($bt['completion_date'])):?>
                             <tr>
                                 <td><?=h($bt['title'])?></td>
-                                <td><?=h($bt['due_date'])?></td>
+
+                                <td class = "<?php if (date("Y-m-d")>=$bt['due_date']) echo 'expired'; ?>" ><?=h($bt['due_date'])?></td>
                                 <td class = "manipulate_btn"><a href="change_completion_date.php?id=<?=h($bt['id'])?>" class="btn complete-btn">完了</a></td>
                                 <td class = "manipulate_btn"><a href="edit.php?id=<?=h($bt['id'])?>" class="btn edit-btn">編集</a></td>
                                 <td class = "manipulate_btn"><a href="delete.php?id=<?=h($bt['id'])?>" class="btn delete-btn">削除</a></td>
