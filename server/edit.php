@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body>
     <div class="wrapper">
-        <h1 class="title">学習管理アプリ</h1>
+        <h1 class="web_title">学習管理アプリ</h1>
 
     <div class="form-area">
         <h3 class="sub_title">編集</h1>
