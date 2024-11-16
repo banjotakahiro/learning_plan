@@ -1,0 +1,244 @@
+/* 共通部分 
+-----------------------*/
+html {
+    font-size: 100%;
+    height: 150%;
+}
+body {
+    font-family: "M PLUS Rounded 1c", serif;
+    font-weight: 400;
+    font-style: normal;
+    background: linear-gradient(to bottom , #003366, #66ccff); /* 濃い青から薄い青へのグラデーション */
+}
+
+.web_title{
+    color: white;
+    text-align: center;
+    margin: 20px 0px;
+
+}
+
+/* 学習内容入力フォーム */
+.form-area{
+    width: 60%; /* 幅を指定 */
+    margin: 0 auto; /* 左右のマージンを自動に設定 */
+    background-color: white;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+.errors{
+    display: block;
+    width: 60%;
+    color: red;
+    list-style: none;
+    margin: 0 auto;
+    background-color: #f9c1c1;
+    border-radius: 5px; 
+}
+
+.errors li {
+    margin-left: 20px;
+    font-size: 15px;
+}
+
+.form_item{
+    display: flex;
+    flex-direction: column;
+    width: 60%; /* 幅を指定 */
+    margin: 0 auto; 
+
+}
+
+input[type="text"],
+input[type="date"] {
+    border: 2px solid black; /* 枠線の色を黒に設定 */
+    border-radius: 5px; /* 角を丸める場合 */
+    width: 100%; /* フォームの幅を100%にする */
+    margin-bottom: 10px;
+}
+
+.submit-btn{
+    display: flex;
+    width: 60%; /* 幅を指定 */
+    margin: 0 auto; 
+    background-color: rgb(241, 9, 191);
+    color: white;
+    border-radius: 5px; /* 角を丸める場合 */
+}
+
+/* 2番目の未完成フォーム */
+.incomplete-area{
+    width: 60%; /* 幅を指定 */
+    margin: 0 auto; /* 左右のマージンを自動に設定 */
+    background-color: white;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+.sub-title{
+    text-align: center;
+    border-bottom: 3px solid #ccc; /* 上部に1pxの薄い線を追加 */
+    width: 100%; /* 幅を100%に設定 */
+    margin: 20px 0; /* 上下のマージンを追加 */
+
+}
+
+.plan-list{
+    width: 90%;
+    margin: 0 auto; 
+}
+
+/* ここが疑問、なぜwidthでないと幅が撮れないのか？marginとかpaddingではだめ。tableタグの仕様の問題かも */
+.plan-title{
+    text-align: left;
+    width: 50%;
+}
+
+.plan-due-date{
+    text-align: left;
+}
+
+.manipulate_btn{
+    display: inline;
+}
+/* 完了日の文字色編集 */
+
+.expired{
+    color: red;
+}
+/* ボタン一覧 */
+
+.btn {
+    display: inline-block; /* Flexboxを使用 */
+    margin-left: 3px;
+}
+
+
+.complete-btn{
+    display: inline-block; /* インラインブロック要素にする */
+    padding: 10px 20px; /* 内側の余白を設定 */
+    background-color: #007bff; /* 青色の背景 */
+    color: white; /* 文字色を白に設定 */
+    border: none; /* ボーダーをなしに設定 */
+    border-radius: 5px; /* 角を丸くする */
+    text-decoration: none; /* 下線をなしに設定 */
+    font-size: 13px; /* フォントサイズを設定 */
+    cursor: pointer; /* カーソルをポインターに設定 */
+    transition: background-color 0.3s; /* ホバー時の背景色の変化をスムーズに */
+}
+
+.complete-btn:hover {
+    background-color: #0056b3; /* ホバー時の背景色を少し暗くする */
+}
+
+.edit-btn{
+    display: inline-block; /* インラインブロック要素にする */
+    padding: 10px 20px; /* 内側の余白を設定 */
+    background-color: #ff8c00; /* オレンジ色の背景 */
+    color: white; /* 文字色を白に設定 */
+    border: none; /* ボーダーをなしに設定 */
+    border-radius: 5px; /* 角を丸くする */
+    text-decoration: none; /* 下線をなしに設定 */
+    font-size: 13px; /* フォントサイズを設定 */
+    cursor: pointer; /* カーソルをポインターに設定 */
+    transition: background-color 0.3s; /* ホバー時の背景色の変化をスムーズに */
+}
+
+.edit-btn:hover {
+    background-color: #e07b00; /* ホバー時の背景色を少し暗くする */
+}
+
+.delete-btn{
+    display: inline-block; /* インラインブロック要素にする */
+    padding: 10px 20px; /* 内側の余白を設定 */
+    background-color: #ff4d4d; /* 赤色の背景 */
+    color: white; /* 文字色を白に設定 */
+    border: none; /* ボーダーをなしに設定 */
+    border-radius: 5px; /* 角を丸くする */
+    text-decoration: none; /* 下線をなしに設定 */
+    font-size: 13px; /* フォントサイズを設定 */
+    cursor: pointer; /* カーソルをポインターに設定 */
+    transition: background-color 0.3s; /* ホバー時の背景色の変化をスムーズに */
+}
+
+.delete-btn:hover {
+    background-color: #e04343; /* ホバー時の背景色を少し暗くする */
+}
+
+.return-btn {
+    display: inline-block; /* インラインブロック要素にする */
+    padding: 10px 20px; /* 内側の余白を設定 */
+    background-color: #66cc66; /* 黄緑色の背景 */
+    color: white; /* 文字色を白に設定 */
+    border: none; /* ボーダーをなしに設定 */
+    border-radius: 5px; /* 角を丸くする */
+    text-decoration: none; /* 下線をなしに設定 */
+    font-size: 13px; /* フォントサイズを設定 */
+    cursor: pointer; /* カーソルをポインターに設定 */
+    transition: background-color 0.3s; /* ホバー時の背景色の変化をスムーズに */
+}
+
+.return-btn:hover {
+    background-color: #4db84d; /* ホバー時の背景色を少し暗くする */
+}
+
+/* 最後の完成フォーム */
+.complete-area{
+    width: 60%;
+    margin: 0 auto; /* 左右のマージンを自動に設定 */
+    background-color: white;
+    padding: 20px;
+}
+
+.plan-completion-date{
+    text-align: left;
+}
+
+@media (max-width: 800px){
+    .form-area,
+    .incomplete-area,
+    .complete-area{
+        width: 80%;
+    }
+    .plan-title{
+        width: 40%;
+    }
+    .btn{
+        padding: 7px 12px;
+        font-size: 15px;
+    }
+    .return-btn{
+        padding: 7px 10px;
+    }
+}
+
+@media (max-width: 600px){
+        .plan-title{
+            width: 25%;
+        }
+}
+
+/* 編集画面のcssファイル */
+.edit-update-btn{
+    margin-bottom: 10px;
+}
+
+.edit-return-btn{
+    text-align: center;
+    margin-bottom: 10px;
+    text-decoration: none;
+    display: block;
+    width: 60%; /* 幅を指定 */
+    margin: 0 auto; 
+    background-color: blue;
+    color: white;
+    border-radius: 5px; /* 角を丸める場合 */
+}
+
+@media (max-width: 800px){
+    .form-area{
+        width: 80%;
+    }
+}
+
