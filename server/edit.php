@@ -17,19 +17,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = filter_input(INPUT_POST, 'title');
     $due_date = filter_input(INPUT_POST, 'due_date');
     // バリデーション
-    $errors = validate_required($title,$due_date);
+    $errors = validate_required($title, $due_date);
 
     if (empty($errors)) {
-        edit_bt_sql($title,$due_date,$id);
+        edit_bt_sql($title, $due_date, $id);
     }
 }
 
 ?>
 
-<?php include_once __DIR__ . '/_head.html' ?>
 
 <!DOCTYPE html>
 <html lang="ja">
+<?php include_once __DIR__ . '/_head.html' ?>
 
 <!-- _head.phpの読み込み -->
 
@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <ul class="errors">
             <?php if ($errors) : ?>
                 <?php foreach ($errors as $error) : ?>
-                    <li><?=h($error)?></li>
+                    <li><?= h($error) ?></li>
                 <?php endforeach; ?>
             <?php endif; ?>
         </ul>
@@ -51,11 +51,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <form action="" method="post">
             <span class=form_item>
                 <label for="title">学習内容</label>
-                <input type="text" name="title" value="<?=h($bt['title'])?>">
+                <input type="text" name="title" value="<?= h($bt['title']) ?>">
             </span>
             <span class=form_item>
                 <label for="due_date">期限日</label>
-                <input type="date" name="due_date" value="<?=h($bt['due_date'])?>">
+                <input type="date" name="due_date" value="<?= h($bt['due_date']) ?>">
             </span>
             <input type="submit" class="edit-update-btn submit-btn" value="更新">
             <a href="index.php" class="edit-return-btn ">戻る</a>

@@ -13,10 +13,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $title = filter_input(INPUT_POST, 'title');
     $due_date = filter_input(INPUT_POST, 'due_date');
     // バリデーション
-    $errors = validate_required($title,$due_date);
+    $errors = validate_required($title, $due_date);
 
     if (empty($errors)) {
-        insert_bt_sql($title,$due_date);
+        insert_bt_sql($title, $due_date);
     }
 }
 
@@ -34,11 +34,11 @@ $bts = find_bt_all();
         <h1 class="web_title">学習管理アプリ</h1>
 
         <div class="form-area">
-        <!-- エラー表示 -->
+            <!-- エラー表示 -->
             <ul class="errors">
                 <?php if ($errors) : ?>
                     <?php foreach ($errors as $error) : ?>
-                        <li><?=h($error)?></li>
+                        <li><?= h($error) ?></li>
                     <?php endforeach; ?>
                 <?php endif; ?>
             </ul>
@@ -47,11 +47,11 @@ $bts = find_bt_all();
             <form action="" method="post">
                 <span class=form_item>
                     <label for="title">学習内容</label>
-                    <input type="text" name="title" value="<?=h($title)?>">
+                    <input type="text" name="title" value="<?= h($title) ?>">
                 </span>
                 <span class=form_item>
                     <label for="due_date">期限日</label>
-                    <input type="date" name="due_date" value="<?=h($due_date)?>">
+                    <input type="date" name="due_date" value="<?= h($due_date) ?>">
                 </span>
                 <input type="submit" class="submit-btn" value="追加">
             </form>
@@ -71,17 +71,17 @@ $bts = find_bt_all();
                 <!-- 未完了のデータを表示 -->
                 <tbody>
                     <?php foreach ($bts as $bt) : ?>
-                        <?php if (empty($bt['completion_date'])):?>
+                        <?php if (empty($bt['completion_date'])): ?>
                             <tr>
-                                <td><?=h($bt['title'])?></td>
+                                <td><?= h($bt['title']) ?></td>
 
-                                <td class = "<?php if (date("Y-m-d")>=$bt['due_date']) echo 'expired'; ?>" ><?=h($bt['due_date'])?></td>
-                                <td class = "manipulate_btn"><a href="change_completion_date.php?id=<?=h($bt['id'])?>" class="btn complete-btn">完了</a></td>
-                                <td class = "manipulate_btn"><a href="edit.php?id=<?=h($bt['id'])?>" class="btn edit-btn">編集</a></td>
-                                <td class = "manipulate_btn"><a href="delete.php?id=<?=h($bt['id'])?>" class="btn delete-btn">削除</a></td>
+                                <td class="<?php if (date("Y-m-d") >= $bt['due_date']) echo 'expired'; ?>"><?= h($bt['due_date']) ?></td>
+                                <td class="manipulate_btn"><a href="change_completion_date.php?id=<?= h($bt['id']) ?>" class="btn complete-btn">完了</a></td>
+                                <td class="manipulate_btn"><a href="edit.php?id=<?= h($bt['id']) ?>" class="btn edit-btn">編集</a></td>
+                                <td class="manipulate_btn"><a href="delete.php?id=<?= h($bt['id']) ?>" class="btn delete-btn">削除</a></td>
                             </tr>
                         <?php endif; ?>
-                    <?php endforeach?>
+                    <?php endforeach ?>
                 </tbody>
             </table>
         </div>
@@ -97,19 +97,19 @@ $bts = find_bt_all();
                         <th class="delete-link-area"></th> -->
                     </tr>
                 </thead>
-                    <!-- 完了済のデータを表示 -->
+                <!-- 完了済のデータを表示 -->
                 <tbody>
                     <?php foreach ($bts as $bt) : ?>
                         <?php if (!empty($bt['completion_date'])): ?>
                             <tr>
-                                <td><?=h($bt['title'])?></td>
-                                <td><?=h($bt['completion_date'])?></td>
-                                <td class = "manipulate_btn"><a href="change_completion_date.php?id=<?=h($bt['id'])?>" class="btn return-btn">未完了</a></td>
-                                <td class = "manipulate_btn"><a href="edit.php?id=<?=h($bt['id'])?>" class="btn edit-btn">編集</a></td>
-                                <td class = "manipulate_btn"><a href="delete.php?id=<?=h($bt['id'])?>" class="btn delete-btn">削除</a></td>
+                                <td><?= h($bt['title']) ?></td>
+                                <td><?= h($bt['completion_date']) ?></td>
+                                <td class="manipulate_btn"><a href="change_completion_date.php?id=<?= h($bt['id']) ?>" class="btn return-btn">未完了</a></td>
+                                <td class="manipulate_btn"><a href="edit.php?id=<?= h($bt['id']) ?>" class="btn edit-btn">編集</a></td>
+                                <td class="manipulate_btn"><a href="delete.php?id=<?= h($bt['id']) ?>" class="btn delete-btn">削除</a></td>
                             </tr>
-                        <?php endif?>
-                    <?php endforeach?>
+                        <?php endif ?>
+                    <?php endforeach ?>
                 </tbody>
             </table>
         </div>

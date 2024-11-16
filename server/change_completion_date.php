@@ -10,9 +10,6 @@ $bt = find_bt_by_id($id);
 
 if ($bt['completion_date']) {
     complete_check_bt($id, null);
-}
-else{
+} else {
     complete_check_bt($id, $completion_date);
 }
-
-?>

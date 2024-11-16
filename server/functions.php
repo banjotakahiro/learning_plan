@@ -6,11 +6,11 @@ function connect_db()
 {
     try {
         return new PDO(
-        DSN,
-        USER,
-        PASSWORD,
-        [PDO::ATTR_ERRMODE =>
-        PDO::ERRMODE_EXCEPTION]
+            DSN,
+            USER,
+            PASSWORD,
+            [PDO::ATTR_ERRMODE =>
+            PDO::ERRMODE_EXCEPTION]
         );
     } catch (PDOException $e) {
         echo $e->getMessage();
@@ -24,7 +24,8 @@ function h($str)
     return htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
 }
 
-function find_bt_all(){
+function find_bt_all()
+{
     $dbh = connect_db();
     // SQLの作成
     $sql = <<<EOM
@@ -66,7 +67,8 @@ function find_bt_by_id($id)
     return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
-function insert_bt_sql($title,$due_date){
+function insert_bt_sql($title, $due_date)
+{
     $dbh = connect_db();
     $sql = <<<EOM
     INSERT INTO
@@ -90,7 +92,8 @@ function insert_bt_sql($title,$due_date){
     exit;
 }
 
-function edit_bt_sql($title,$due_date,$id){
+function edit_bt_sql($title, $due_date, $id)
+{
     $dbh = connect_db();
     $sql = <<<EOM
     UPDATE
@@ -111,7 +114,8 @@ function edit_bt_sql($title,$due_date,$id){
     exit;
 }
 
-function complete_check_bt($id, $completion_date){
+function complete_check_bt($id, $completion_date)
+{
     $dbh = connect_db();
     $sql = <<<EOM
     UPDATE
@@ -121,17 +125,18 @@ function complete_check_bt($id, $completion_date){
     WHERE
         id = :id
     EOM;
-    
+
     $stmt = $dbh->prepare($sql);
     $stmt->bindValue(':id', $id, PDO::PARAM_INT);
     $stmt->bindValue(':completion_date', $completion_date, PDO::PARAM_STR);
     $stmt->execute();
-    
+
     header('Location: index.php');
     exit;
 }
 
-function delete_bt($id){
+function delete_bt($id)
+{
     // データベースに接続
     $dbh = connect_db();
 
@@ -151,7 +156,8 @@ function delete_bt($id){
     header('Location: index.php');
     exit;
 }
-function validate_required($title,$due_date){
+function validate_required($title, $due_date)
+{
     $errors = [];
     // バリデーション
     if ($title == '') {
@@ -162,5 +168,3 @@ function validate_required($title,$due_date){
     }
     return $errors;
 }
-
-?>
